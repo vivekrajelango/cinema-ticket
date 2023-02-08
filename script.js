@@ -14,10 +14,12 @@ const increment=(ticketType, count)=>{
     ticketType.value++
     count.innerHTML = ticketType.value;
 };
-const decrement=(ticketType)=>{
+const decrement=(ticketType, count)=>{
     ticketType.value<1 ? 
         ticketType.value = 0 : 
-            ticketType.value--
+            ticketType.value--;
+
+    count.innerHTML = ticketType.value;
 };
 const updateCount=()=>{
     totalTicket.innerHTML = parseInt(adultNumber.value) + parseInt(childNumber.value) + parseInt(infantNumber.value);
@@ -28,7 +30,7 @@ const updateCount=()=>{
 
     totalAmount.innerHTML = (parseInt(adultNumber.value) * adultTicketPrice) + (parseInt(childNumber.value) * childTicketPrice + (infantTicketPrice));
   
-    if((parseInt(adultNumber.value) + parseInt(childNumber.value) + parseInt(infantNumber.value))>=20){
+    if((parseInt(adultNumber.value) + parseInt(childNumber.value))>=20){
         incrementButton.forEach((item)=>item.disabled = true);
         errorMsg.innerHTML = "Only 20 ticket allowed at a time";
     } 
@@ -42,6 +44,12 @@ const updateCount=()=>{
         errorMsg.innerHTML = "Bookings not allowed without Adults";
         childNumber.value = 0;
         infantNumber.value = 0;
+        childCount.innerHTML = 0;
+        childTotal.innerHTML = 0;
+        infantCount.innerHTML = 0;
+        totalTicket.innerHTML = 0;
+        totalAmount.innerHTML = 0;
+
         childIncButton.forEach((item)=>item.disabled = true)
         confirmButton.disabled = true;
     } 
@@ -53,7 +61,7 @@ const incrementAdut=()=>{
     updateCount();
 }
 const decrementAdult=()=>{
-    decrement(adultNumber);
+    decrement(adultNumber, adultCount);
     updateCount();
 }
 
@@ -63,7 +71,7 @@ const incrementChild=()=>{
     updateCount();
 }
 const decrementChild=()=>{
-    decrement(childNumber);
+    decrement(childNumber, childCount);
     updateCount();
 }
 
@@ -72,7 +80,7 @@ const incrementInfant=()=>{
     updateCount();
 }
 const decrementInfant=()=>{
-    decrement(infantNumber);
+    decrement(infantNumber, infantCount);
     updateCount();
 }
 
