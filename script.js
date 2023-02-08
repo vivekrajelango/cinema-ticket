@@ -9,9 +9,13 @@ let totalTicket = document.getElementById('totalTicket');
 let incrementButton = document.querySelectorAll('.increment');
 let childIncButton = document.querySelectorAll('.childInc');
 let confirmButton = document.getElementById('confirm');
+let paymentText = document.getElementById('payment');
+let container = document.querySelector('.container');
+let seats = document.querySelectorAll('.row .seat:not(.booked)');
 confirmButton.disabled = true;
-document.getElementById('seatSelection').style.display = 'none';
-document.getElementById('paymentButtonHandler').style.display = 'none';
+document.getElementById('screenContainer').style.display = 'none';
+document.getElementById('seatContainer').style.display = 'block';
+document.getElementById('paymentButton').style.display = 'none';
 
 const increment=(ticketType, count)=>{
     ticketType.value++
@@ -57,6 +61,27 @@ const updateCount=()=>{
     } 
 };
 
+const updateSeatCount=()=>{
+    const selectedSeats = document.querySelectorAll('.row .seat.selected');
+    const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+
+    let allowedCount = parseInt(adultNumber.value) + parseInt(childNumber.value);
+    let totalAmount = (parseInt(adultNumber.value) * adultTicketPrice) + (parseInt(childNumber.value) * childTicketPrice);
+    if(allowedCount === seatsIndex.length-1){
+        document.getElementById('selectSeatText').style.display = 'none';
+        document.getElementById('paymentButton').style.display = 'block';
+        paymentText.innerHTML = `Proceed to Pay (£ ${totalAmount})`
+        const notSelected = document.querySelectorAll('.row .seat:not(.selected)');
+        [...notSelected].map((item)=>item.style.pointerEvents = "none");
+    } else { 
+        document.getElementById('selectSeatText').style.display = 'block';
+        selectSeatText.innerHTML = `Please select your ${allowedCount} seat(s)`
+        document.getElementById('paymentButton').style.display = 'none';
+        const canSelect = document.querySelectorAll('.row .seat:not(.selected)');
+        [...canSelect].map((item)=>item.style.pointerEvents = "visible");
+    }
+}
+
 
 const incrementAdut=()=>{
     increment(adultNumber, adultCount);
@@ -85,18 +110,27 @@ const decrementInfant=()=>{
     updateCount();
 }
 
-const confirmBooking=()=>{
-    document.getElementById('ticketBooking').style.display = 'none';
-    document.getElementById('confirmButtonHandler').style.display = 'none';
-    document.getElementById('seatSelection').style.display = 'block';
-    document.getElementById('paymentButtonHandler').style.display = 'block';
-};
+const selectSeats=()=>{
+    document.getElementById('screenContainer').style.display = 'block';
+    document.getElementById('seatContainer').style.display = 'none';
+    updateSeatCount();
+}
 
 const editBooking=()=>{
-    document.getElementById('ticketBooking').style.display = 'block';
-    document.getElementById('confirmButtonHandler').style.display = 'block';
-    document.getElementById('seatSelection').style.display = 'none';
-    document.getElementById('paymentButtonHandler').style.display = 'none';
+    document.getElementById('screenContainer').style.display = 'none';
+    document.getElementById('seatContainer').style.display = 'block';
+}
+
+container.addEventListener('click', (e) => {
+    if(e.target.classList.contains('seat') && !e.target.classList.contains('booked')){
+        e.target.classList.toggle('selected');
+        updateSeatCount();
+    }
+})
+
+const proceedPayment=()=>{
+    alert('Third-party payment gateway')
+    console.log('thirdparty payment')
 }
 
 
