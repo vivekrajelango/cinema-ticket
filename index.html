@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Cinema ticket booking</title>
+  </head>
+  <body>
+    <!-- <div class="movie-container">
+      <label>Pick a movie:</label>
+      <select id="movie">
+        <option value="10">Avengers: Endgame ($10)</option>
+        <option value="12">Joker ($12)</option>
+        <option value="8">Toy Story 4 ($8)</option>
+        <option value="9">The Lion King ($9)</option>
+      </select>
+    </div> -->
+    <div class="container">
+        <h2 class="text-center mb-5">Cinema ticket</h2>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 mb-3">
+                <div class="text-center">
+                    <h5>Adult</h5>
+                </div>
+                <form class="mb-3">
+                    <button type="button" class="btn btn-secondary" onclick="decrementAdult()">-</button>
+                    <input class="number" id="adultNumber" disabled type="number" value="0">
+                    <button type="button" class="btn btn-secondary increment" onclick="incrementAdut()">+</button>
+                </form>
+                <div class="text-center">
+                    <h5>Child</h5>
+                </div>
+                <form class="mb-3">
+                    <button type="button" class="btn btn-secondary" onclick="decrementChild()">-</button>
+                    <input class="number" id="childNumber" disabled type="number" value="0">
+                    <button type="button" class="btn btn-secondary increment childInc" disabled="true" onclick="incrementChild()">+</button>
+                </form>
+                <div class="text-center">
+                    <h5>Infant</h5>
+                </div>
+                <form class="mb-3">
+                    <button type="button" class="btn btn-secondary" onclick="decrementInfant()">-</button>
+                    <input class="number" id="infantNumber" disabled type="number" value="0">
+                    <button type="button" class="btn btn-secondary increment childInc" disabled="true" onclick="incrementInfant()">+</button>
+                </form>
+                <div class="text-center">
+                    <small id="errorMsg" class="text-danger"></small>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <h5 class="text-center">Summary</h5>
+                <table class="table">
+                    <thead class="bg-info">
+                      <tr>
+                        <th scope="col">Type (£)</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Adult (20)</th>
+                        <td><span id="adultCount"></span></td>
+                        <!-- <td>15</td> -->
+                        <td>£ <span id="adultTotal"></span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Child (10)</th>
+                        <td><span id="childCount"></span></td>
+                        <!-- <td>10</td> -->
+                        <td>£ <span id="childTotal"></span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Infant (0)</th>
+                        <td><span id="infantCount"></span></td>
+                        <!-- <td>0</td> -->
+                        <td>£ <span id="infantTotal"></span></td>
+                      </tr>
+                      <tr class="table-primary">
+                        <th scope="row">Sub Total</th>
+                        <td><span id="totalTicket"></span></td>
+                        <td>£ <span id="totalAmount"></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <div class="row mt-5 text-center">
+            <div class="col-sm-12">
+                <button type="button" id="confirm" class="btn btn-primary">Make Payment</button>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
