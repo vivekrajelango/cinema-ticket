@@ -9,6 +9,9 @@ let totalTicket = document.getElementById('totalTicket');
 let incrementButton = document.querySelectorAll('.increment');
 let childIncButton = document.querySelectorAll('.childInc');
 let confirmButton = document.getElementById('confirm');
+confirmButton.disabled = true;
+document.getElementById('seatSelection').style.display = 'none';
+document.getElementById('paymentButtonHandler').style.display = 'none';
 
 const increment=(ticketType, count)=>{
     ticketType.value++
@@ -42,6 +45,7 @@ const updateCount=()=>{
     
     if(parseInt(adultNumber.value)<1){
         errorMsg.innerHTML = "Bookings not allowed without Adults";
+        childIncButton.forEach((item)=>item.disabled = true)
         childNumber.value = 0;
         infantNumber.value = 0;
         childCount.innerHTML = 0;
@@ -49,8 +53,6 @@ const updateCount=()=>{
         infantCount.innerHTML = 0;
         totalTicket.innerHTML = 0;
         totalAmount.innerHTML = 0;
-
-        childIncButton.forEach((item)=>item.disabled = true)
         confirmButton.disabled = true;
     } 
 };
@@ -64,7 +66,6 @@ const decrementAdult=()=>{
     decrement(adultNumber, adultCount);
     updateCount();
 }
-
 
 const incrementChild=()=>{
     increment(childNumber, childCount);
@@ -82,6 +83,20 @@ const incrementInfant=()=>{
 const decrementInfant=()=>{
     decrement(infantNumber, infantCount);
     updateCount();
+}
+
+const confirmBooking=()=>{
+    document.getElementById('ticketBooking').style.display = 'none';
+    document.getElementById('confirmButtonHandler').style.display = 'none';
+    document.getElementById('seatSelection').style.display = 'block';
+    document.getElementById('paymentButtonHandler').style.display = 'block';
+};
+
+const editBooking=()=>{
+    document.getElementById('ticketBooking').style.display = 'block';
+    document.getElementById('confirmButtonHandler').style.display = 'block';
+    document.getElementById('seatSelection').style.display = 'none';
+    document.getElementById('paymentButtonHandler').style.display = 'none';
 }
 
 
