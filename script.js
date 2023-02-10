@@ -157,11 +157,11 @@ container.addEventListener('click', (e) => {
 const proceedPayment=()=>{
     const totalFare = (parseInt(adultNumber.value) * adultTicketPrice) + (parseInt(childNumber.value) * childTicketPrice);
     const allowedCount = parseInt(adultNumber.value) + parseInt(childNumber.value);
-    console.log('payment & seat service invoked');
     const seatService = new SeatReservationService;
     seatService.reserveSeat(id, allowedCount);
     const paymentService = new TicketPaymentService;
-    paymentService.makePayment(id, totalFare)
+    paymentService.makePayment(id, totalFare);
+    alert('payment & seat services invoked');
 }
 
 
