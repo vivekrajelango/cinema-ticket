@@ -23,21 +23,21 @@
         <div class="mb-3">
             <div class="text-center mt-5 mb-3">
                 <span class="h5 me-3">Adult&nbsp;</span>
-                <button type="button" class="btn btn-danger" onclick="decrementAdult()">-</button>
+                <button type="button" id="decrementAdult" class="btn btn-danger">-</button>
                 <input class="number btn btn-light" id="adultNumber" disabled type="number" value="0">
-                <button type="button" class="btn btn-danger increment" onclick="incrementAdut()">+</button>
+                <button type="button" id="incrementAdult" class="btn btn-danger increment">+</button>
             </div>
             <div class="text-center mb-3">
                 <span class="h5 me-3">Child&nbsp;</span>
-                <button type="button" class="btn btn-danger" onclick="decrementChild()">-</button>
+                <button type="button" id="decrementChild" class="btn btn-danger">-</button>
                 <input class="number btn btn-light" id="childNumber" disabled type="number" value="0">
-                <button type="button" class="btn btn-danger increment childInc" disabled="true" onclick="incrementChild()">+</button>
+                <button type="button" id="incrementChild" class="btn btn-danger increment childInc" disabled="true">+</button>
             </div>
             <div class="text-center mb-3">
                 <span class="h5 me-3">Infant</span>
-                <button type="button" class="btn btn-danger" onclick="decrementInfant()">-</button>
+                <button type="button" id="decrementInfant" class="btn btn-danger">-</button>
                 <input class="number btn btn-light" id="infantNumber" disabled type="number" value="0">
-                <button type="button" class="btn btn-danger increment childInc" disabled="true" onclick="incrementInfant()">+</button>
+                <button type="button" id="incrementInfant" class="btn btn-danger increment childInc" disabled="true">+</button>
             </div>
             <div class="text-center">
                 <small id="errorMsg" class="text-danger"></small>
@@ -50,7 +50,7 @@
         </div>
         <div class="row text-center">
             <div class="col-sm-12">
-                <button disabed="true" id="confirm" onclick="selectSeats()" class="btn btn-success">Select Seats</button>
+                <button disabed="true" id="selectSeatButton" class="btn btn-success">Select Seats</button>
             </div>
         </div>
     </div>
@@ -147,7 +147,7 @@
                     <div class="seat booked"></div>
                     <div class="seat booked"></div>
                   </div>
-                <button type="button" onclick="editBooking()" class="btn btn-link">Edit booking</button>
+                <button type="button" id="editBooking" class="btn btn-link">Edit booking</button>
               </div>
             </div>
 
@@ -190,12 +190,13 @@
 
             <div class="row mt-5 text-center" id="paymentButton">
                 <div class="col-sm-12">
-                    <button type="button" id="payment" onclick="proceedPayment()" class="btn btn-success"></button>
+                    <button type="button" id="payment" class="btn btn-success"></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
+<!-- <script src="./src/thirdparty/seatbooking/SeatReservationService.js"></script> -->
 </html>
